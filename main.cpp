@@ -7,9 +7,9 @@
 #include <string>
 
 
-#ifdef _DEBUG
+//#ifdef _DEBUG
 #include <iostream>
-#endif
+//#endif
 
 
 #pragma comment(lib,"d3d12.lib")
@@ -62,14 +62,14 @@ void EnableDebugLayer() {
 	}
 }
 
-#ifdef _DEBUG
+//#ifdef _DEBUG
 int main()
 {
-#else
-#include<Windows.h>
-int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
-{
-#endif
+//#else
+//#include<Windows.h>
+//int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+//{
+//#endif
 
 	DebugOutputFormatString("Show window test.\n");
 
