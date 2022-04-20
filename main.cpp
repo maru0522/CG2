@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 
-
+#include <d3dcompiler.h>
 #ifdef _DEBUG
 #include <iostream>
 #endif
@@ -14,6 +14,7 @@
 
 #pragma comment(lib,"d3d12.lib")
 #pragma comment(lib,"dxgi.lib")
+#pragma comment(lib,"d3dcompiler.lib;")
 
 
 using namespace DirectX;
@@ -242,10 +243,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	XMFLOAT3* vertMap = nullptr;
 	result = vertBuff->Map(0, nullptr, (void**)&vertMap);
+
 	std::copy(std::begin(vertices), std::end(vertices), vertMap);
+
 	vertBuff->Unmap(0, nullptr);
 
 	D3D12_VERTEX_BUFFER_VIEW vbView = {};
+	vbView.BufferLocation = vertBuff->GetGPUVirtualAddress();	//バッファーの仮想アドレス
+	vbView.SizeInBytes = sizeof(vertices);						//全バイト数
+	vbView.StrideInBytes = sizeof(vertices[0]);					//1頂点当たりのバイト数
+
+
+
+	ID3DBlob* _vsBlob = nullptr;
+	ID3DBlob* _psBlob = nullptr;
+
 
 	MSG msg = {};
 
