@@ -12,9 +12,9 @@
 #include <dinput.h>
 
 #include<d3dcompiler.h>
-#ifdef _DEBUG
+//#ifdef _DEBUG
 #include <iostream>
-#endif
+//#endif
 
 
 #pragma comment(lib,"d3d12.lib")
@@ -70,14 +70,14 @@ void EnableDebugLayer() {
 	}
 }
 
-#ifdef _DEBUG
+//#ifdef _DEBUG
 int main()
 {
-#else
-#include<Windows.h>
-int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
-{
-#endif
+//#else
+//#include<Windows.h>
+//int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+//{
+//#endif
 
 	DebugOutputFormatString("Show window test.\n");
 
@@ -111,12 +111,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 							 w.hInstance,			// 呼び出しアプリケーションハンドル
 							 nullptr);				// 追加パラメーター
 
-#ifdef _DEBUG
+//#ifdef _DEBUG
 	//デバッグレイヤーをオンに
 	//デバイス生成時前にやっておかないと、デバイス生成後にやると
 	//デバイスがロスとしてしまうので注意
 	EnableDebugLayer();
-#endif
+//#endif
 
 	//DirextX12まわり初期化
 	//フィーチャーレベル列挙
